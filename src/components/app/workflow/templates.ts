@@ -12,7 +12,7 @@ export interface FlowNodeData extends Record<string, unknown> {
   run?: RunState;
 }
 
-export type FlowNode = Node<FlowNodeData, "nexora">;
+export type FlowNode = Node<FlowNodeData, "alder">;
 export type FlowEdge = Edge;
 
 export interface SavedWorkflow {
@@ -30,10 +30,10 @@ export const PALETTE: { kind: NodeKind; variant: string; label: string; descript
   { kind: "trigger", variant: "Webhook", label: "Incoming webhook", description: "Start when an HTTP event arrives", config: { path: "/hooks/inbound", method: "POST" } },
   { kind: "trigger", variant: "Schedule", label: "On a schedule", description: "Run at fixed intervals", config: { cron: "0 9 * * 1-5", timezone: "Asia/Kolkata" } },
   { kind: "trigger", variant: "New ticket", label: "New support ticket", description: "Fires on ticket creation", config: { queue: "General", priority: "any" } },
-  { kind: "ai", variant: "Classify", label: "Classify intent", description: "Label input into categories", config: { model: "nexora-swift-s", labels: "billing, technical, account", minConfidence: 0.8 } },
-  { kind: "ai", variant: "Extract", label: "Extract fields", description: "Pull structured data from text or docs", config: { model: "nexora-vision-m", schema: "invoice_v2" } },
+  { kind: "ai", variant: "Classify", label: "Classify intent", description: "Label input into categories", config: { model: "alder-swift-s", labels: "billing, technical, account", minConfidence: 0.8 } },
+  { kind: "ai", variant: "Extract", label: "Extract fields", description: "Pull structured data from text or docs", config: { model: "alder-vision-m", schema: "invoice_v2" } },
   { kind: "ai", variant: "Agent", label: "Run agent", description: "Delegate to a registered agent", config: { agent: "Atlas", maxSteps: 8, approval: false } },
-  { kind: "ai", variant: "Summarise", label: "Summarise", description: "Condense long content", config: { model: "nexora-reason-l", length: "short" } },
+  { kind: "ai", variant: "Summarise", label: "Summarise", description: "Condense long content", config: { model: "alder-reason-l", length: "short" } },
   { kind: "condition", variant: "If / else", label: "Confidence check", description: "Branch on a condition", config: { field: "confidence", operator: ">=", value: 0.8 } },
   { kind: "condition", variant: "Switch", label: "Route by category", description: "Multi-way branch", config: { field: "category", cases: "billing, technical" } },
   { kind: "action", variant: "Send email", label: "Send email", description: "Reply or notify by email", config: { to: "{{customer.email}}", template: "resolution" } },
@@ -43,7 +43,7 @@ export const PALETTE: { kind: NodeKind; variant: string; label: string; descript
 ];
 
 const n = (id: string, x: number, y: number, p: (typeof PALETTE)[number], label?: string): FlowNode => ({
-  id, type: "nexora", position: { x, y },
+  id, type: "alder", position: { x, y },
   data: { kind: p.kind, variant: p.variant, label: label ?? p.label, config: { ...p.config } },
 });
 const P = (variant: string) => PALETTE.find((p) => p.variant === variant)!;

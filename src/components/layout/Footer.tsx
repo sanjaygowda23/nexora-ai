@@ -57,11 +57,11 @@ export function Footer() {
         </div>
       </div>
       <div className="container flex flex-col gap-3 border-t border-white/[.06] py-6 text-[12px] text-ink-500 md:flex-row md:items-center md:justify-between">
-        <p>© {new Date().getFullYear()} NEXORA AI — an independent design & engineering showcase.</p>
+        <p>© {new Date().getFullYear()} Alder — an independent design & engineering showcase.</p>
         <p className="max-w-xl md:text-right">Demo brands, people, testimonials and results on this site are fictional and illustrative. They are not real customers or verified outcomes.</p>
       </div>
       <div aria-hidden className="pointer-events-none select-none overflow-hidden">
-        <p className="-mb-[0.22em] text-center font-display text-[22vw] font-semibold leading-none tracking-[-0.06em] text-transparent [-webkit-text-stroke:1px_rgba(255,255,255,.06)]">NEXORA</p>
+        <p className="-mb-[0.22em] text-center font-display text-[22vw] font-semibold leading-none tracking-[-0.06em] text-transparent [-webkit-text-stroke:1px_rgba(255,255,255,.06)]">ALDER</p>
       </div>
     </footer>
   );

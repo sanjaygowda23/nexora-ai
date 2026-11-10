@@ -38,7 +38,7 @@ type FormValues = z.infer<typeof schema>;
 type Status = { kind: "idle" } | { kind: "error"; message: string } | { kind: "success"; ref: string; values: FormValues };
 
 export default function Contact() {
-  usePageMeta("Book a consultation", "Book a consultation with NEXORA AI to scope agents, automation and integration for your business.");
+  usePageMeta("Book a consultation", "Book a consultation with Alder to scope agents, automation and integration for your business.");
   const [params] = useSearchParams();
   const topic = solutions.find((s) => s.id === params.get("topic"));
   const [status, setStatus] = useState<Status>({ kind: "idle" });

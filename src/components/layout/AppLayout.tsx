@@ -42,7 +42,7 @@ function useAppTheme() {
 export function AppLayout() {
   const dark = useAppTheme();
   const { settings, setSettings, signOut, logs } = useAppStore();
-  const [collapsed, setCollapsed] = useLocalStorage("nexora:v1:sidebar-collapsed", false);
+  const [collapsed, setCollapsed] = useLocalStorage("alder:v1:sidebar-collapsed", false);
   const [mobileOpen, setMobileOpen] = useState(false);
   const [cmdOpen, setCmdOpen] = useState(false);
   const isDesktop = useMediaQuery("(min-width: 1024px)");
@@ -68,7 +68,7 @@ export function AppLayout() {
   const sidebar = (mini: boolean) => (
     <div className="flex h-full flex-col">
       <div className={cn("flex h-14 items-center border-b px-4", mini && "justify-center px-0")}>
-        <Link to="/app/dashboard" aria-label="NEXORA console home" className="text-foreground">
+        <Link to="/app/dashboard" aria-label="ALDER console home" className="text-foreground">
           {mini ? <LogoMark /> : <Logo className="[&_span]:text-foreground" />}
         </Link>
       </div>

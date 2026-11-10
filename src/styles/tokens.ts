@@ -1,5 +1,5 @@
 /**
- * NEXORA design tokens — single source of truth for brand values.
+ * ALDER design tokens — single source of truth for brand values.
  * Consumed by tailwind.config.ts and by JS-driven visuals (canvas, charts, React Flow).
  */
 export const tokens = {

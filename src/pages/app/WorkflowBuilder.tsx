@@ -24,8 +24,8 @@ import { useMediaQuery } from "@/hooks/useMediaQuery";
 import { cn, uid } from "@/lib/utils";
 import { useAppStore } from "@/store/AppStore";
 
-const nodeTypes: NodeTypes = { nexora: WorkflowNode };
-const DND_MIME = "application/nexora-node";
+const nodeTypes: NodeTypes = { alder: WorkflowNode };
+const DND_MIME = "application/alder-node";
 const sleep = (ms: number) => new Promise((r) => setTimeout(r, ms));
 
 export default function WorkflowBuilderPage() {
@@ -80,7 +80,7 @@ function Builder({ wfId }: { wfId: string }) {
 
   const addNode = useCallback((p: (typeof PALETTE)[number], position?: { x: number; y: number }) => {
     const pos = position ?? (() => { const v = getViewport(); return { x: (-v.x + 320) / v.zoom, y: (-v.y + 160) / v.zoom }; })();
-    const node: FlowNode = { id: uid("n"), type: "nexora", position: pos, data: { kind: p.kind, variant: p.variant, label: p.label, config: { ...p.config } } };
+    const node: FlowNode = { id: uid("n"), type: "alder", position: pos, data: { kind: p.kind, variant: p.variant, label: p.label, config: { ...p.config } } };
     setNodes((ns) => [...ns.map((n) => ({ ...n, selected: false })), { ...node, selected: true }]);
     setSelectedId(node.id);
     if (!isDesktop) setShowPalette(false);

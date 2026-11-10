@@ -45,7 +45,7 @@ export function Navbar() {
         aria-hidden
       />
       <nav className="container relative flex h-16 items-center justify-between" aria-label="Main">
-        <Link to="/" className="relative z-10 rounded-md text-white" aria-label="NEXORA AI home">
+        <Link to="/" className="relative z-10 rounded-md text-white" aria-label="Alder home">
           <Logo />
         </Link>
 

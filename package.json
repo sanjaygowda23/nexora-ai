@@ -1,9 +1,9 @@
 {
-  "name": "nexora-ai",
+  "name": "alder",
   "private": true,
   "version": "1.0.0",
   "type": "module",
-  "description": "NEXORA AI — enterprise AI operations platform. Frontend engineering & UI/UX showcase.",
+  "description": "Alder — enterprise AI operations platform. Frontend engineering & UI/UX showcase.",
   "scripts": {
     "dev": "vite",
     "build": "tsc -b && vite build",

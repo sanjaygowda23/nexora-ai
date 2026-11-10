@@ -1,12 +1,12 @@
-# NEXORA AI
+# Alder
 
 **Intelligence That Moves Business Forward.**
 
 A premium enterprise AI company website and a fully interactive AI-operations console, designed and engineered as a frontend and UI/UX showcase.
 
-![NEXORA AI home page](docs/screenshots/01-home-hero.png)
+![Alder home page](docs/screenshots/01-home-hero.png)
 
-> **Demo notice.** NEXORA AI is a fictional company. All brands, people, testimonials, case studies and metrics are illustrative and clearly labelled as such in the UI. Nothing is a real customer or verified outcome.
+> **Demo notice.** Alder is a fictional company. All brands, people, testimonials, case studies and metrics are illustrative and clearly labelled as such in the UI. Nothing is a real customer or verified outcome.
 
 ---
 
@@ -25,6 +25,8 @@ A premium enterprise AI company website and a fully interactive AI-operations co
 | **Light & dark themes** | Semantic CSS-variable tokens; the console switches at runtime, charts use a palette validated for both. |
 
 ## Screenshots
+
+These archived screenshots show the original branding; the current application is branded Alder.
 
 | Marketing | Console |
 |---|---|
@@ -94,4 +96,4 @@ See [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md) and [docs/CASE_STUDY.md](docs/C
 
 ## License
 
-MIT — free to learn from. The NEXORA name and all demo content are fictional.
+MIT — free to learn from. The ALDER name and all demo content are fictional.

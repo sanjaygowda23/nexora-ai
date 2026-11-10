@@ -9,7 +9,7 @@ import { initialWorkflows, type SavedWorkflow } from "@/components/app/workflow/
  * localStorage under a versioned namespace so the demo survives reloads.
  * ------------------------------------------------------------------ */
 
-const NS = "nexora:v1:";
+const NS = "alder:v1:";
 
 export type Theme = "dark" | "light" | "system";
 export interface Settings {
@@ -21,8 +21,8 @@ export interface Settings {
 }
 
 export const defaultSettings: Settings = {
-  profile: { name: "Alex Morgan", email: "alex.morgan@nexora-demo.ai", title: "Head of AI Operations", timezone: "Asia/Kolkata" },
-  workspace: { name: "Acme Operations", slug: "acme-ops", region: "ap-south-1", defaultModel: "nexora-reason-l" },
+  profile: { name: "Alex Morgan", email: "alex.morgan@alder.example", title: "Head of AI Operations", timezone: "Asia/Kolkata" },
+  workspace: { name: "Acme Operations", slug: "acme-ops", region: "ap-south-1", defaultModel: "alder-reason-l" },
   notifications: { agentFailures: true, weeklyDigest: true, approvals: true, productUpdates: false, channel: "both" },
   appearance: { theme: "dark", density: "comfortable", reduceMotion: false },
   security: { mfa: true, sessionTimeout: "8h", ipAllowlist: false, auditExport: true },

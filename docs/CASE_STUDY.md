@@ -1,10 +1,10 @@
-# UI/UX Case Study — NEXORA AI
+# UI/UX Case Study — Alder
 
 *Designing an enterprise AI brand that shows rather than tells.*
 
 ## The brief
 
-Design and build a website and SaaS console for NEXORA AI, a fictional enterprise AI consultancy and platform. The bar was a funded enterprise product: no template look, no generic AI art, no fake buttons.
+Design and build a website and SaaS console for Alder, a fictional enterprise AI consultancy and platform. The bar was a funded enterprise product: no template look, no generic AI art, no fake buttons.
 
 ## The problem with AI websites
 

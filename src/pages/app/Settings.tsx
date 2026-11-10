@@ -125,7 +125,7 @@ function Workspace() {
           footer={<><Button type="button" variant="ghost" disabled={!isDirty} onClick={() => reset()}>Discard</Button><Button type="submit" variant="brand" disabled={!isDirty}>Save changes</Button></>}>
           <div className="grid gap-5 sm:grid-cols-2">
             <FormField id="w-name" label="Workspace name" required error={errors.name?.message}><Input {...register("name")} /></FormField>
-            <FormField id="w-slug" label="URL slug" required error={errors.slug?.message} hint="console.nexora.ai/your-slug"><Input {...register("slug")} /></FormField>
+            <FormField id="w-slug" label="URL slug" required error={errors.slug?.message} hint="console.alder.example/your-slug"><Input {...register("slug")} /></FormField>
             <Controller control={control} name="region" render={({ field }) => (
               <FormField id="w-region" label="Data region" hint="Where prompts, outputs and logs are stored.">
                 <Select value={field.value} onValueChange={field.onChange}><SelectTrigger><SelectValue /></SelectTrigger>

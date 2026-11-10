@@ -63,7 +63,7 @@ export function ArchitectureDiagram({ selected, onSelect, className }: { selecte
   const dim = (id: LayerId) => selected && selected !== id;
 
   return (
-    <svg viewBox="0 0 1000 560" className={cn("block w-full", className)} role={interactive ? "group" : "img"} aria-label="NEXORA platform architecture: data flows up from sources through ingestion, AI processing, agent orchestration and the integration layer, with governance and monitoring spanning every layer.">
+    <svg viewBox="0 0 1000 560" className={cn("block w-full", className)} role={interactive ? "group" : "img"} aria-label="ALDER platform architecture: data flows up from sources through ingestion, AI processing, agent orchestration and the integration layer, with governance and monitoring spanning every layer.">
       <defs>
         <linearGradient id="arch-layer" x1="0" x2="1">
           <stop offset="0" stopColor="#121928" /><stop offset="1" stopColor="#0D121E" />

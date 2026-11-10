@@ -12,7 +12,7 @@ import { Testimonials } from "@/components/marketing/home/Testimonials";
 import { FinalCTA } from "@/components/marketing/FinalCTA";
 
 export default function Home() {
-  usePageMeta("NEXORA AI", "NEXORA AI designs, deploys and operates enterprise AI agents, intelligent workflow automation and governed AI infrastructure.");
+  usePageMeta("Alder", "Alder designs, deploys and operates enterprise AI agents, intelligent workflow automation and governed AI infrastructure.");
   return (
     <>
       <Hero />

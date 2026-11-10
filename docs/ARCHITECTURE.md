@@ -1,6 +1,6 @@
 # Architecture
 
-This document explains how NEXORA AI is put together and why.
+This document explains how Alder is put together and why.
 
 ## 1. Overview
 
@@ -43,7 +43,7 @@ RouterProvider (createHashRouter)
 
 | State | Where | Persistence |
 |---|---|---|
-| Agents, workflows, user-generated logs, settings, session | `AppStoreProvider` (React context) | `localStorage` under `nexora:v1:*` (versioned namespace) |
+| Agents, workflows, user-generated logs, settings, session | `AppStoreProvider` (React context) | `localStorage` under `alder:v1:*` (versioned namespace) |
 | Filters, pagination, tabs, dialogs | URL search params | URL |
 | Builder canvas (nodes/edges/selection/run state) | Local `useNodesState` / `useEdgesState` | Saved to the store explicitly (Save / ⌘S / Save & leave) |
 | Sidebar collapsed | `useLocalStorage` | `localStorage` |
@@ -58,7 +58,7 @@ RouterProvider (createHashRouter)
 ```
 WorkflowBuilder
 ├── Palette           ─ HTML5 drag source + click-to-add (touch & keyboard)
-├── ReactFlow canvas  ─ custom `nexora` node type, smoothstep edges, MiniMap, Controls
+├── ReactFlow canvas  ─ custom `alder` node type, smoothstep edges, MiniMap, Controls
 ├── Properties panel  ─ type-aware inputs generated from node config
 └── Execution log     ─ live, aria-live step stream
 ```

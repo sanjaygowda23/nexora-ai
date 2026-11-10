@@ -66,7 +66,7 @@ export default function Analytics() {
   const exportCsv = () => {
     const rows = ["date,tasks,succeeded,failed,cost_usd,latency_ms", ...data.map((d) => `${d.date},${d.tasks},${d.success},${d.failed},${d.cost},${d.latency}`)];
     const url = URL.createObjectURL(new Blob([rows.join("\n")], { type: "text/csv" }));
-    const a = Object.assign(document.createElement("a"), { href: url, download: `nexora-usage-${data[0]?.date}_${data[data.length - 1]?.date}.csv` });
+    const a = Object.assign(document.createElement("a"), { href: url, download: `alder-usage-${data[0]?.date}_${data[data.length - 1]?.date}.csv` });
     a.click(); URL.revokeObjectURL(url);
     toast.success("CSV exported", { description: `${data.length} days of usage data` });
   };

@@ -101,7 +101,7 @@
 
 /* React Flow theming */
 .react-flow { --xy-background-color: hsl(var(--background)); --xy-node-background-color: transparent; --xy-edge-stroke: hsl(var(--muted-foreground)); }
-.react-flow__node-nexora { padding: 0; border: 0; background: transparent; border-radius: 12px; }
+.react-flow__node-alder { padding: 0; border: 0; background: transparent; border-radius: 12px; }
 .react-flow__attribution { display: none; }
 .react-flow__handle { width: 10px; height: 10px; border: 2px solid hsl(var(--background)); background: #4C7DFF; }
 .react-flow__edge-path { stroke: hsl(var(--muted-foreground)); stroke-width: 1.5; }

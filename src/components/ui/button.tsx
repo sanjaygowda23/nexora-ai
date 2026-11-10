@@ -32,7 +32,7 @@ const buttonVariants = cva(
 
 export interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement>, VariantProps<typeof buttonVariants> {
   asChild?: boolean;
-  /** NEXORA signature: a glowing signal dot that blooms into an arrow on hover. */
+  /** ALDER signature: a glowing signal dot that blooms into an arrow on hover. */
   signal?: boolean;
 }
 

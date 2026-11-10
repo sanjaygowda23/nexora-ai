@@ -14,7 +14,7 @@ export const agentSchema = z.object({
   role: z.string().trim().min(3, "Describe the role in a few words."),
   description: z.string().trim().min(10, "Add a short description (10+ characters).").max(300),
   department: z.string().min(1, "Select a department."),
-  model: z.enum(["nexora-reason-l", "nexora-swift-s", "nexora-vision-m"]),
+  model: z.enum(["alder-reason-l", "alder-swift-s", "alder-vision-m"]),
   temperature: z.number().min(0).max(1),
   approvalRequired: z.boolean(),
   tools: z.array(z.string()).min(1, "Grant at least one tool."),
@@ -23,7 +23,7 @@ export const agentSchema = z.object({
 export type AgentFormValues = z.infer<typeof agentSchema>;
 
 export const emptyAgent: AgentFormValues = {
-  name: "", role: "", description: "", department: "", model: "nexora-reason-l", temperature: 0.2, approvalRequired: true, tools: [], status: "draft",
+  name: "", role: "", description: "", department: "", model: "alder-reason-l", temperature: 0.2, approvalRequired: true, tools: [], status: "draft",
 };
 
 /** Reusable agent configuration form — used by the create dialog and the agent detail page. */

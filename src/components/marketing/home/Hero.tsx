@@ -50,7 +50,7 @@ export function Hero() {
           </div>
           <div>
             <motion.p {...fade(1.0)} className="max-w-md text-[17px] leading-relaxed text-ink-300">
-              NEXORA designs, deploys and operates AI agents that work inside your systems — with the governance, observability and human oversight enterprises require.
+              ALDER designs, deploys and operates AI agents that work inside your systems — with the governance, observability and human oversight enterprises require.
             </motion.p>
             <motion.div {...fade(1.15)} className="mt-8 flex flex-wrap gap-3">
               <Button asChild size="lg" signal>
