@@ -25,7 +25,7 @@ export function Footer() {
           <p className="mt-5 max-w-xs text-[14px] leading-relaxed text-ink-400">Intelligence that moves business forward. Enterprise AI agents, automation and integration — governed end to end.</p>
           <form onSubmit={subscribe} className="mt-8 max-w-sm" noValidate>
             <label htmlFor="footer-email" className="eyebrow">Monthly briefing</label>
-            <div className="mt-3 flex gap-2 rounded-full border border-white/10 bg-white/[.03] p-1 focus-within:border-electric/50">
+            <div className="mt-3 flex gap-2 rounded-full border border-white/10 bg-white/[.03] p-1 focus-within:border-brand/50">
               <input
                 id="footer-email"
                 type="email"

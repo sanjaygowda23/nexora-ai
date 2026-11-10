@@ -118,7 +118,7 @@ function MegaMenu({ group, onEnter, onLeave }: { group: NavGroup; onEnter: () =>
             <li key={item.label}>
               <Link to={item.to} className="group flex items-start gap-3 rounded-xl p-3 transition-colors hover:bg-white/[.05] focus-visible:bg-white/[.05]">
                 {item.icon && (
-                  <span className="mt-0.5 grid h-8 w-8 shrink-0 place-items-center rounded-lg border border-white/10 bg-white/[.03] text-ink-300 transition-colors group-hover:border-electric/40 group-hover:text-electric-400">
+                  <span className="mt-0.5 grid h-8 w-8 shrink-0 place-items-center rounded-lg border border-white/10 bg-white/[.03] text-ink-300 transition-colors group-hover:border-brand/40 group-hover:text-brand-400">
                     <item.icon className="h-4 w-4" />
                   </span>
                 )}
@@ -131,7 +131,7 @@ function MegaMenu({ group, onEnter, onLeave }: { group: NavGroup; onEnter: () =>
           ))}
         </ul>
         {group.feature && (
-          <Link to={group.feature.to} className="group relative flex flex-col justify-end border-l border-white/[.06] bg-gradient-to-b from-electric/[.08] to-violet/[.08] p-5">
+          <Link to={group.feature.to} className="group relative flex flex-col justify-end border-l border-white/[.06] bg-ink-850 p-5">
             <span className="eyebrow mb-auto text-signal">Featured</span>
             <span className="mt-8 text-[14px] font-medium text-white">{group.feature.title}</span>
             <span className="mt-1.5 text-[12.5px] leading-snug text-ink-400">{group.feature.body}</span>
@@ -174,7 +174,7 @@ function MobileMenu() {
                 <AnimatePresence initial={false}>
                   {expanded === g.label && (
                     <motion.ul initial={{ height: 0, opacity: 0 }} animate={{ height: "auto", opacity: 1 }} exit={{ height: 0, opacity: 0 }} className="overflow-hidden">
-                      <li><Link to={g.to} className="block py-2.5 text-[15px] text-electric-400">Overview</Link></li>
+                      <li><Link to={g.to} className="block py-2.5 text-[15px] text-brand-400">Overview</Link></li>
                       {g.items.map((i) => (
                         <li key={i.label}>
                           <Link to={i.to} className="flex items-center gap-3 py-2.5 text-[15px] text-ink-300">

@@ -48,8 +48,8 @@ function WorkflowNodeImpl({ data, selected }: NodeProps<FlowNode>) {
 
       {data.kind === "condition" ? (
         <>
-          <Handle id="true" type="source" position={Position.Right} style={{ top: "38%", background: "#22B07D" }} />
-          <Handle id="false" type="source" position={Position.Right} style={{ top: "72%", background: "#E5484D" }} />
+          <Handle id="true" type="source" position={Position.Right} style={{ top: "38%", background: "#4C7A67" }} />
+          <Handle id="false" type="source" position={Position.Right} style={{ top: "72%", background: "#B95F57" }} />
           <span className="pointer-events-none absolute -right-9 top-[38%] -translate-y-1/2 font-mono text-[9.5px] text-success">yes</span>
           <span className="pointer-events-none absolute -right-8 top-[72%] -translate-y-1/2 font-mono text-[9.5px] text-destructive">no</span>
         </>

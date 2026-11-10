@@ -22,13 +22,13 @@ The visual identity is built around one idea: **AI as a visible, traceable signa
 
 | Element | How "signal" shows up |
 |---|---|
-| Logo | An "N" drawn as one continuous path, ending in a live cyan node |
-| Signature interaction | Every primary button carries a glowing dot that blooms into an arrow on hover |
+| Logo | A monochrome geometric "A" with a node at its apex |
+| Signature interaction | Primary buttons use a fixed arrow with a small hover/focus translation |
 | Hero | Packets of light travel through a real-looking agent pipeline |
 | Architecture | Data visibly rises through layers along an animated bus |
 | Voice | Monospace "readouts" (`01 — THE GAP`, `runs today 12,480`) give an instrument-panel tone |
 
-Accent colour is used *sparingly*: electric blue for action, violet for depth, cyan only for "live" signals. The restraint is what makes the moments of colour feel meaningful.
+Accent colour is used sparingly: forest for filled actions, leaf for active states on charcoal, and mineral for secondary diagram information. Warm paper and charcoal carry most of the page.
 
 ## Typography and layout
 
@@ -43,7 +43,7 @@ Accent colour is used *sparingly*: electric blue for action, violet for depth, c
 
 **The gap — interactive, not a list.** Four common failures sit on the left. Hover or arrow-key through them, and the right panel reframes each one as an opportunity with a single proof stat. This turns a pain-point list into a conversation.
 
-**Solutions — a bento, not a card grid.** The brief warned against repetitive layouts. AI Agents gets the large tile, with a step-by-step execution trace inside it, because it's the flagship. The other five are compact. A cursor-following spotlight adds depth without glow.
+**Solutions — a bento, not a card grid.** The brief warned against repetitive layouts. AI Agents gets the large tile, with a step-by-step execution trace inside it, because it's the flagship. The other five are compact. Flat surfaces keep attention on the execution trace.
 
 **How it works — a deliberate light section.** Five dark sections in a row become monotonous. The methodology sits on a light "paper" surface that reads like a document. A progress rail fills as you scroll.
 

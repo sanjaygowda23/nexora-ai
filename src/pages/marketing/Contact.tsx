@@ -86,7 +86,7 @@ export default function Contact() {
               const I = Icon as typeof Clock;
               return (
                 <li key={t as string} className="flex gap-4">
-                  <span className="grid h-10 w-10 shrink-0 place-items-center rounded-xl border border-white/10 bg-white/[.03] text-electric-400"><I className="h-[18px] w-[18px]" /></span>
+                  <span className="grid h-10 w-10 shrink-0 place-items-center rounded-xl border border-white/10 bg-white/[.03] text-brand-400"><I className="h-[18px] w-[18px]" /></span>
                   <span><span className="block text-[15px] font-medium text-white">{t as string}</span><span className="text-[14px] text-ink-400">{d as string}</span></span>
                 </li>
               );
@@ -153,11 +153,11 @@ export default function Contact() {
 
                 <Controller control={control} name="budget" render={({ field }) => (
                   <fieldset aria-describedby={errors.budget ? "budget-error" : undefined}>
-                    <legend className="text-[13px] font-medium text-foreground">Estimated budget<span className="ml-0.5 text-electric-400" aria-hidden>*</span></legend>
+                    <legend className="text-[13px] font-medium text-foreground">Estimated budget<span className="ml-0.5 text-brand-400" aria-hidden>*</span></legend>
                     <div role="radiogroup" className="mt-2 grid grid-cols-2 gap-2 sm:grid-cols-4">
                       {BUDGETS.map((b) => (
                         <label key={b} className={cn("flex cursor-pointer items-center justify-center rounded-lg border px-3 py-2.5 text-[13px] transition-colors has-[:focus-visible]:ring-2 has-[:focus-visible]:ring-ring",
-                          field.value === b ? "border-electric bg-electric/10 text-white" : "border-input text-ink-300 hover:border-white/20")}>
+                          field.value === b ? "border-brand bg-brand/10 text-white" : "border-input text-ink-300 hover:border-white/20")}>
                           <input type="radio" className="sr-only" name="budget" value={b} checked={field.value === b} onChange={() => field.onChange(b)} onBlur={field.onBlur} />
                           {b}
                         </label>
@@ -173,7 +173,7 @@ export default function Contact() {
 
                 <div className="flex flex-col-reverse gap-4 border-t border-white/[.07] pt-6 sm:flex-row sm:items-center sm:justify-between">
                   <label className="flex cursor-pointer items-center gap-2 text-[12.5px] text-ink-500">
-                    <input type="checkbox" checked={simulateError} onChange={(e) => setSimulateError(e.target.checked)} className="h-3.5 w-3.5 accent-electric" />
+                    <input type="checkbox" checked={simulateError} onChange={(e) => setSimulateError(e.target.checked)} className="h-3.5 w-3.5 accent-brand" />
                     Demo: simulate a server error
                   </label>
                   <Button type="submit" size="lg" signal={!isSubmitting} disabled={isSubmitting} className="min-w-[220px]">

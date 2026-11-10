@@ -102,7 +102,7 @@ export function AppLayout() {
       </nav>
       <div className="space-y-2 border-t p-3">
         {!mini && (
-          <div className="rounded-lg border bg-gradient-to-br from-primary/10 to-violet/10 p-3">
+          <div className="rounded-lg border bg-muted p-3">
             <p className="text-[12.5px] font-medium">Demo workspace</p>
             <p className="mt-0.5 text-[11.5px] text-muted-foreground">Data is simulated and saved in this browser.</p>
           </div>
@@ -176,7 +176,7 @@ export function AppLayout() {
             </DropdownMenu>
             <DropdownMenu>
               <DropdownMenuTrigger asChild>
-                <button className="ml-1 grid h-8 w-8 place-items-center rounded-full bg-gradient-to-br from-electric to-violet text-[12px] font-semibold text-white ring-offset-background focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2" aria-label="Account menu">
+                <button className="ml-1 grid h-8 w-8 place-items-center rounded-full bg-brand text-[12px] font-semibold text-white ring-offset-background focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2" aria-label="Account menu">
                   {settings.profile.name.split(" ").map((n) => n[0]).join("").slice(0, 2)}
                 </button>
               </DropdownMenuTrigger>

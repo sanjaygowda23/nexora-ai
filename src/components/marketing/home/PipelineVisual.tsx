@@ -1,6 +1,6 @@
-import { AnimatePresence, motion } from "framer-motion";
+import { AnimatePresence, motion, useInView } from "framer-motion";
 import { Bot, Brain, CheckCircle2, Database, Mail, ShieldCheck, Hash, Ticket, UserCheck } from "lucide-react";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useReducedMotion } from "@/hooks/useMediaQuery";
 import { cn } from "@/lib/utils";
 
@@ -48,45 +48,69 @@ const EVENTS = [
 
 const toneStyles: Record<N["tone"], string> = {
   in: "text-ink-100",
-  ai: "text-electric-400",
+  ai: "text-brand-400",
   gate: "text-signal",
   out: "text-ink-300",
-  human: "text-violet-400",
+  human: "text-mineral-400",
 };
 
 export function PipelineVisual() {
   const reduce = useReducedMotion();
+  const frameRef = useRef<HTMLDivElement>(null);
+  const svgRef = useRef<SVGSVGElement>(null);
+  const inView = useInView(frameRef);
+  const [paused, setPaused] = useState(false);
+  const [pageVisible, setPageVisible] = useState(() => !document.hidden);
+  const running = !reduce && !paused && inView && pageVisible;
+  useEffect(() => {
+    const onVisibility = () => setPageVisible(!document.hidden);
+    document.addEventListener("visibilitychange", onVisibility);
+    return () => document.removeEventListener("visibilitychange", onVisibility);
+  }, []);
+  useEffect(() => {
+    if (running) svgRef.current?.unpauseAnimations();
+    else svgRef.current?.pauseAnimations();
+  }, [running]);
+  const eventIndex = useRef(3);
   const [step, setStep] = useState(reduce ? SEQUENCE.length : 0);
   const [events, setEvents] = useState(EVENTS.slice(0, 3).map((e, i) => ({ ...e, id: i })));
 
   useEffect(() => {
-    if (reduce) return;
+    if (!running) return;
     const s = setInterval(() => setStep((x) => (x + 1) % (SEQUENCE.length + 2)), 900);
-    let k = 3;
     const ev = setInterval(() => {
+      const k = eventIndex.current++;
       setEvents((prev) => [...prev.slice(-5), { ...EVENTS[k % EVENTS.length], id: k }]);
-      k++;
     }, 1400);
     return () => { clearInterval(s); clearInterval(ev); };
-  }, [reduce]);
+  }, [running]);
 
-  const lit = new Set(SEQUENCE.slice(0, step));
+  const lit = new Set(SEQUENCE.slice(0, reduce ? SEQUENCE.length : step));
 
   return (
-    <div className="grid lg:grid-cols-[1fr_300px]">
+    <div ref={frameRef}>
+      <div className="flex items-center justify-between border-b border-white/[.06] px-4 py-2">
+        <span className="text-xs text-ink-400">Illustrative workflow</span>
+        <button type="button" onClick={() => setPaused((value) => !value)} disabled={reduce} aria-pressed={paused || reduce}
+          className="min-h-9 rounded-md px-3 text-xs text-ink-300 transition-colors hover:bg-white/[.06] hover:text-white disabled:opacity-70">
+          {reduce ? "Motion reduced" : paused ? "Resume animation" : "Pause animation"}
+        </button>
+      </div>
+      <div className={cn("grid lg:grid-cols-[1fr_300px]", !running && "pipeline-paused")}>
+
       <div className="relative overflow-hidden">
         <div className="grid-guides absolute inset-0 opacity-60 [mask-image:radial-gradient(ellipse_at_center,black,transparent_75%)]" aria-hidden />
-        <svg viewBox="0 0 1000 360" className="relative block w-full" role="img" aria-label="Animated diagram: a support ticket is classified, passes a policy gate, and is resolved by an AI agent or escalated to a human.">
+        <svg ref={svgRef} viewBox="0 0 1000 360" className="relative block w-full" role="img" aria-label="Animated diagram: a support ticket is classified, passes a policy gate, and is resolved by an AI agent or escalated to a human.">
           <defs>
             <linearGradient id="edge-g" x1="0" x2="1">
-              <stop offset="0" stopColor="#4C7DFF" stopOpacity=".15" />
-              <stop offset=".5" stopColor="#8B5CF6" stopOpacity=".55" />
-              <stop offset="1" stopColor="#4C7DFF" stopOpacity=".15" />
+              <stop offset="0" stopColor="#44705B" stopOpacity=".15" />
+              <stop offset=".5" stopColor="#6D858C" stopOpacity=".55" />
+              <stop offset="1" stopColor="#44705B" stopOpacity=".15" />
             </linearGradient>
             <radialGradient id="pkt-g">
               <stop offset="0" stopColor="#fff" />
-              <stop offset=".35" stopColor="#3EE6D2" />
-              <stop offset="1" stopColor="#3EE6D2" stopOpacity="0" />
+              <stop offset=".35" stopColor="#C5D8A4" />
+              <stop offset="1" stopColor="#C5D8A4" stopOpacity="0" />
             </radialGradient>
           </defs>
 
@@ -97,7 +121,7 @@ export function PipelineVisual() {
               <g key={a + b}>
                 <path id={`p-${a}-${b}`} d={d} fill="none" stroke="rgba(255,255,255,.08)" strokeWidth="1.5" />
                 <path d={d} fill="none" stroke="url(#edge-g)" strokeWidth="1.5" strokeDasharray="4 8" className="animate-dash" />
-                <path d={d} fill="none" stroke="#4C7DFF" strokeWidth="2" strokeLinecap="round" pathLength={1}
+                <path d={d} fill="none" stroke="#44705B" strokeWidth="2" strokeLinecap="round" pathLength={1}
                   strokeDasharray="1" strokeDashoffset={active ? 0 : 1}
                   style={{ transition: "stroke-dashoffset .8s cubic-bezier(.22,.7,.2,1)", opacity: active ? 0.9 : 0 }} />
                 {!reduce && (
@@ -118,17 +142,17 @@ export function PipelineVisual() {
             const w = isEnd ? 132 : 156;
             return (
               <g key={n.id} transform={`translate(${n.x - (isEnd ? 54 : 78)} ${n.y - 26})`}>
-                <rect width={w} height="52" rx="12" fill={on ? "rgba(76,125,255,.10)" : "rgba(13,18,30,.92)"} stroke={on ? "rgba(76,125,255,.55)" : "rgba(255,255,255,.09)"}
+                <rect width={w} height="52" rx="12" fill={on ? "rgba(68,112,91,.10)" : "rgba(35,42,37,.92)"} stroke={on ? "rgba(68,112,91,.55)" : "rgba(255,255,255,.09)"}
                   style={{ transition: "all .5s cubic-bezier(.22,.7,.2,1)" }} />
                 <foreignObject x="10" y="10" width="32" height="32">
                   <div className={cn("grid h-8 w-8 place-items-center rounded-lg border border-white/10 bg-white/[.04]", toneStyles[n.tone])}>
                     <Icon className="h-4 w-4" />
                   </div>
                 </foreignObject>
-                <text x="50" y="23" fill="#EDF0F7" fontSize="12.5" fontWeight="500" fontFamily="Inter Tight, sans-serif">{n.label}</text>
-                <text x="50" y="39" fill="#8A93A8" fontSize="10" fontFamily="JetBrains Mono, monospace">{n.sub}</text>
+                <text x="50" y="23" fill="#F4F3EE" fontSize="12.5" fontWeight="500" fontFamily="Inter Tight, sans-serif">{n.label}</text>
+                <text x="50" y="39" fill="#AAAFA7" fontSize="10" fontFamily="JetBrains Mono, monospace">{n.sub}</text>
                 {on && n.id === "mail" && (
-                  <circle cx={w - 10} cy="10" r="4" fill="#34D399"><animate attributeName="opacity" values="1;.3;1" dur="1.6s" repeatCount="indefinite" /></circle>
+                  <circle cx={w - 10} cy="10" r="4" fill="#91BC9B"><animate attributeName="opacity" values="1;.3;1" dur="1.6s" repeatCount="indefinite" /></circle>
                 )}
               </g>
             );
@@ -141,7 +165,7 @@ export function PipelineVisual() {
           <span className="eyebrow">Event stream</span>
           <span className="flex items-center gap-1.5 font-mono text-[10px] text-success">
             <span className="relative flex h-1.5 w-1.5"><span className="absolute inset-0 rounded-full bg-success animate-pulse-ring" /><span className="relative h-1.5 w-1.5 rounded-full bg-success" /></span>
-            LIVE
+            {running ? "LIVE" : "PAUSED"}
           </span>
         </div>
         <ul className="space-y-1.5 font-mono text-[10.5px] leading-relaxed" aria-live="off">
@@ -149,7 +173,7 @@ export function PipelineVisual() {
             {events.map((e) => (
               <motion.li key={e.id} layout initial={{ opacity: 0, x: -8 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0 }} transition={{ duration: 0.35 }}
                 className="flex gap-2 truncate">
-                <span className={cn("shrink-0", e.t === "done" ? "text-success" : e.t === "gate" ? "text-signal" : e.t === "ai" ? "text-electric-400" : "text-ink-500")}>
+                <span className={cn("shrink-0", e.t === "done" ? "text-success" : e.t === "gate" ? "text-signal" : e.t === "ai" ? "text-brand-400" : "text-ink-500")}>
                   {e.t === "done" ? <CheckCircle2 className="mt-0.5 inline h-3 w-3" /> : "›"}
                 </span>
                 <span className="truncate text-ink-300">{e.m}</span>
@@ -158,6 +182,7 @@ export function PipelineVisual() {
           </AnimatePresence>
         </ul>
       </aside>
+      </div>
     </div>
   );
 }

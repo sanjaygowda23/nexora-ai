@@ -14,7 +14,7 @@ A premium enterprise AI company website and a fully interactive AI-operations co
 
 | | |
 |---|---|
-| **Live operations console in the hero** | An animated agent pipeline (SVG + SMIL packets, React node state) inside a product frame that tilts flat as you scroll. |
+| **Live operations console in the hero** | An animated agent pipeline (SVG + SMIL packets, React node state) inside a flat product frame with pause/resume and an off-screen pause. |
 | **Node-based workflow builder** | React Flow canvas with drag-and-drop palette, typed nodes, branching conditions, property editing, validation, animated execution, failure injection, save to `localStorage` and an unsaved-changes guard. |
 | **Interactive platform architecture** | A keyboard-operable SVG architecture diagram with animated data bus; selecting a layer drives a detail panel. |
 | **Transparent ROI calculator** | Four sliders feed a visible model — hours released, FTE equivalent and payback — with the assumptions stated. |
@@ -22,7 +22,7 @@ A premium enterprise AI company website and a fully interactive AI-operations co
 | **Analytics** | Date presets + custom range, usage trend (chart ↔ table), stacked performance bars, per-agent stats, spend and latency — plus CSV export. |
 | **Activity logs** | Debounced search, status & agent filters, page-size control, numbered pagination, trace detail modal — all state in the URL. |
 | **⌘K command palette** | Keyboard-driven search across pages, agents, workflows and actions. |
-| **Light & dark themes** | Semantic CSS-variable tokens; the console switches at runtime, charts use a palette validated for both. |
+| **Light & dark themes** | Semantic CSS-variable tokens; the console switches at runtime, charts use a restrained palette contrast-checked for both. |
 
 ## Screenshots
 
@@ -88,8 +88,8 @@ docs/
 - No console errors across all 18 routes; no horizontal overflow at 375 / 768 / 1280 px
 - Route-level code splitting — the marketing site never downloads Recharts or React Flow
 - Semantic landmarks, skip link, labelled controls, focus-visible rings, keyboard-operable tabs, menus, diagram and command palette
-- `prefers-reduced-motion` respected (CSS, letter reveal, canvas glow and SMIL packets)
-- Categorical chart palette validated for colour-vision deficiency and contrast in both themes
+- `prefers-reduced-motion` respected (CSS, hero entrance, MotionConfig and SMIL packets)
+- Categorical chart palette checked for 3:1 contrast against white and dark card surfaces; categories also use labels and legends
 - Per-route titles and descriptions, Open Graph tags
 
 See [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md) and [docs/CASE_STUDY.md](docs/CASE_STUDY.md) for depth.

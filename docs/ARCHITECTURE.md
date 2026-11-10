@@ -29,7 +29,7 @@ RouterProvider (createHashRouter)
 
 ## 3. Design system
 
-**Tokens** (`src/styles/tokens.ts`) are the single source of brand truth: the ink scale (950→100), paper surfaces, electric / violet / signal accents, status colours, type families, a fluid display scale (`display-xl/lg/md`) and easing curves. Tailwind consumes them, and so do JS-driven visuals (canvas, SVG, charts, React Flow).
+**Tokens** (`src/styles/tokens.ts`) are the single source of brand truth: the ink scale (950→100), paper surfaces, forest / mineral / leaf accents, status colours, type families, a fluid display scale (`display-xl/lg/md`) and easing curves. Tailwind consumes them, and so do JS-driven visuals (SVG, charts, React Flow).
 
 **Semantic theme variables** (`src/styles/globals.css`) follow the shadcn convention: `--background`, `--surface`, `--card`, `--primary`, `--muted-foreground`, `--border`… defined for `:root` (light) and `.dark`. Components only reference semantic names, so the console flips theme by toggling one class on `<html>`.
 
@@ -70,21 +70,16 @@ WorkflowBuilder
 
 ## 6. Motion
 
-- Framer Motion handles entrance reveals (`Reveal`, staggered variants), shared-layout indicators (`layoutId` tabs and nav), presence animations and scroll-linked transforms.
-- `LetterReveal` animates each character through blur → electric → final colour. Words are kept unbroken, and screen readers get the plain sentence via `aria-label`.
-- `HorizonGlow` paints an 80×48 `ImageData` buffer each frame and lets CSS upscale it. This produces a perfectly smooth gradient for about 4k pixels of work per frame. An `IntersectionObserver` pauses it off-screen.
-- SVG packets use SMIL `animateMotion`, which runs off the main thread with no React renders.
-- `prefers-reduced-motion` disables animation loops and SMIL packets, and shortens CSS transitions. The console has its own "Reduce motion" preference for execution speed.
+- The hero uses one short, neutral entrance; there is no character colour sweep, blur, perspective tilt or animated background horizon.
+- `Reveal` keeps section content visible at rest. Existing specialised UI transitions remain in their own components.
+- Buttons use fixed geometry and a small arrow translation. Hover movement respects `prefers-reduced-motion`.
+- `MotionConfig reducedMotion="user"` applies the operating-system preference to Framer Motion transforms. CSS also reduces transition and animation durations.
+- The illustrative hero pipeline has a pause/resume control. Its timers and SMIL animation pause off screen, in hidden tabs, and under reduced motion.
+- The console retains its own reduce-motion preference for workflow execution speed.
 
 ## 7. Data visualisation
 
-Charts use one validated categorical palette: `#4C7DFF, #C4861E, #9A62F5, #16998A`, in fixed order. It was checked with a CVD/contrast validator against both `#0D121E` and `#FFFFFF`:
-
-- lightness band ✓
-- chroma floor ✓
-- worst adjacent CVD ΔE ≈ 18 ✓
-- normal-vision ΔE ≈ 27 ✓
-- ≥ 3:1 contrast ✓
+Charts use `#4C7A67`, `#A77535`, `#617F98`, and `#987164`, in fixed order. Each colour exceeds 3:1 contrast against the dark card surface (`#1C211E`) and white. Legends and text labels carry category meaning; this revision does not claim a colour-vision-deficiency certification.
 
 The rules followed throughout:
 
@@ -107,7 +102,7 @@ The rules followed throughout:
 - **Code splitting.** Route-level splitting, with heavy libraries isolated to the console.
 - **No raster images.** Every visual is SVG, CSS or canvas, so there is nothing to optimise or lazy-load.
 - **Fonts.** Fonts are preconnected and use `display=swap`.
-- **Cheap animation.** Animations favour `transform` and `opacity`, and the canvas loop pauses off-screen.
+- **Cheap animation.** Motion favours `transform` and `opacity`; the hero simulation pauses off screen and in hidden tabs.
 
 ## 10. Extending
 

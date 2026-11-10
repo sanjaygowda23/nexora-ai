@@ -28,7 +28,7 @@ export default function Industries() {
             <div className="container grid gap-12 py-20 md:py-28 lg:grid-cols-[1fr_1.25fr]">
               <div className="lg:sticky lg:top-28 lg:self-start">
                 <div className="flex items-center gap-3">
-                  <span className="grid h-11 w-11 place-items-center rounded-xl border border-white/10 bg-white/[.03] text-electric-400"><ind.icon className="h-5 w-5" /></span>
+                  <span className="grid h-11 w-11 place-items-center rounded-xl border border-white/10 bg-white/[.03] text-brand-400"><ind.icon className="h-5 w-5" /></span>
                   <span className="font-mono text-[11px] uppercase tracking-[0.12em] text-ink-500">0{idx + 1} · {ind.name}</span>
                 </div>
                 <h2 id={`${ind.id}-h`} className="mt-6 text-display-md font-medium text-white">{ind.headline}</h2>
@@ -46,7 +46,7 @@ export default function Industries() {
                 {ind.useCases.map((u, i) => (
                   <Reveal key={u.title} delay={i * 0.06}>
                     <article className="group grid gap-4 rounded-2xl border border-white/[.07] bg-ink-900 p-6 transition-colors hover:border-white/[.14] sm:grid-cols-[auto_1fr]">
-                      <span className="font-mono text-[12px] text-electric-400">{String(i + 1).padStart(2, "0")}</span>
+                      <span className="font-mono text-[12px] text-brand-400">{String(i + 1).padStart(2, "0")}</span>
                       <div>
                         <h3 className="text-[18px] font-medium tracking-[-0.02em] text-white">{u.title}</h3>
                         <p className="mt-2 text-[14.5px] leading-relaxed text-ink-400">{u.body}</p>

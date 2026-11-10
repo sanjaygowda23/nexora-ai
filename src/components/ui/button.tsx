@@ -4,12 +4,12 @@ import { cva, type VariantProps } from "class-variance-authority";
 import { cn } from "@/lib/utils";
 
 const buttonVariants = cva(
-  "group/btn relative inline-flex select-none items-center justify-center gap-2 whitespace-nowrap rounded-full font-medium tracking-[-0.01em] transition-[background,color,border,box-shadow,transform] duration-200 ease-out focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background disabled:pointer-events-none disabled:opacity-50 active:scale-[.98] [&_svg]:shrink-0",
+  "group/btn relative inline-flex select-none items-center justify-center gap-2 whitespace-nowrap rounded-full font-medium tracking-[-0.01em] transition-[background-color,color,border-color,transform] duration-200 ease-out focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background disabled:pointer-events-none disabled:opacity-50 active:scale-[.98] [&_svg]:shrink-0",
   {
     variants: {
       variant: {
-        primary: "bg-white text-ink-950 hover:bg-ink-100 shadow-[0_1px_0_rgba(255,255,255,.4)_inset,0_8px_24px_-12px_rgba(76,125,255,.6)]",
-        brand: "bg-electric text-white hover:bg-electric-600 shadow-[0_1px_0_rgba(255,255,255,.25)_inset,0_10px_30px_-12px_rgba(76,125,255,.8)]",
+        primary: "bg-paper text-ink-950 hover:bg-paper-2",
+        brand: "bg-brand text-white hover:bg-brand-600",
         secondary: "bg-white/[.06] text-foreground border border-white/10 hover:bg-white/[.1] hover:border-white/20",
         outline: "border border-border bg-transparent hover:bg-accent",
         ghost: "hover:bg-accent text-foreground",
@@ -32,7 +32,7 @@ const buttonVariants = cva(
 
 export interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement>, VariantProps<typeof buttonVariants> {
   asChild?: boolean;
-  /** ALDER signature: a glowing signal dot that blooms into an arrow on hover. */
+  /** ALDER signature: a fixed arrow that steps forward on hover and keyboard focus. */
   signal?: boolean;
 }
 
@@ -56,18 +56,10 @@ export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
 Button.displayName = "Button";
 
 function SignalDot({ size }: { size?: ButtonProps["size"] }) {
-  const big = size === "xl" || size === "lg";
   return (
-    <span
-      aria-hidden
-      className={cn(
-        "absolute top-1/2 grid -translate-y-1/2 place-items-center rounded-full bg-signal shadow-[0_0_12px_rgba(62,230,210,.75)] transition-all duration-[450ms] ease-out",
-        big ? "right-5 h-2.5 w-2.5 group-hover/btn:right-[6px] group-hover/btn:h-[40px] group-hover/btn:w-[40px]" : "right-4 h-2 w-2 group-hover/btn:right-[5px] group-hover/btn:h-[30px] group-hover/btn:w-[30px]",
-        "group-hover/btn:shadow-none"
-      )}
-    >
-      <svg viewBox="0 0 12 12" className={cn("-translate-x-1 opacity-0 transition-all delay-75 duration-300 group-hover/btn:translate-x-0 group-hover/btn:opacity-100", big ? "h-4 w-4" : "h-3 w-3")}>
-        <path d="M4.5 2.5 8 6l-3.5 3.5" fill="none" stroke="#05070D" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round" />
+    <span aria-hidden className={cn("absolute top-1/2 grid -translate-y-1/2 place-items-center", size === "xl" || size === "lg" ? "right-5" : "right-4")}>
+      <svg viewBox="0 0 12 12" className="h-3.5 w-3.5 transition-transform duration-150 motion-safe:group-hover/btn:translate-x-0.5 motion-safe:group-focus-visible/btn:translate-x-0.5">
+        <path d="M2 6h8M6.5 2.5 10 6l-3.5 3.5" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
       </svg>
     </span>
   );

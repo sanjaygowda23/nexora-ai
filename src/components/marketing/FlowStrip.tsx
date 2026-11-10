@@ -2,7 +2,7 @@ import { motion } from "framer-motion";
 import { cn } from "@/lib/utils";
 
 /** Compact animated workflow illustration: steps joined by flowing connectors. */
-export function FlowStrip({ steps, accent = "#4C7DFF", className }: { steps: string[]; accent?: string; className?: string }) {
+export function FlowStrip({ steps, accent = "#44705B", className }: { steps: string[]; accent?: string; className?: string }) {
   return (
     <ol className={cn("flex flex-col gap-3 sm:flex-row sm:items-center sm:gap-0", className)} aria-label="Workflow">
       {steps.map((s, i) => (

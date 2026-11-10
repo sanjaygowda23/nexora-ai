@@ -16,7 +16,7 @@ export function FormField({
     <div className={cn("space-y-2", className)}>
       <Label htmlFor={id}>
         {label}
-        {required && <span className="ml-0.5 text-electric-400" aria-hidden>*</span>}
+        {required && <span className="ml-0.5 text-brand-400" aria-hidden>*</span>}
       </Label>
       {withControlProps(children, { id, "aria-invalid": !!error, "aria-describedby": describedBy })}
       {hint && !error && <p id={`${id}-hint`} className="text-xs text-muted-foreground">{hint}</p>}

@@ -52,7 +52,7 @@ export function ImpactCalculator() {
                   min={s.min} max={s.max} step={s.step}
                   value={v[s.key]}
                   onChange={(e) => setV((p) => ({ ...p, [s.key]: Number(e.target.value) }))}
-                  className="nx-range mt-4 w-full"
+                  className="alder-range mt-4 w-full"
                   style={{ ["--pct" as string]: `${pct}%` }}
                 />
               </div>
@@ -60,7 +60,7 @@ export function ImpactCalculator() {
           })}
         </form>
 
-        <div className="relative flex flex-col justify-between gap-10 overflow-hidden bg-gradient-to-br from-electric/[.12] via-ink-900 to-violet/[.12] p-6 md:p-10" aria-live="polite">
+        <div className="relative flex flex-col justify-between gap-10 overflow-hidden bg-ink-850 p-6 md:p-10" aria-live="polite">
           <div className="grid-guides absolute inset-0 opacity-40" aria-hidden />
           <div className="relative">
             <p className="eyebrow">Indicative annual capacity released</p>

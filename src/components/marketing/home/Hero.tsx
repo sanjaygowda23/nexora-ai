@@ -1,58 +1,37 @@
-import { motion, useScroll, useTransform } from "framer-motion";
-import { useRef } from "react";
+import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { LetterReveal } from "@/components/motion/LetterReveal";
-import { HorizonGlow } from "./HorizonGlow";
 import { PipelineVisual } from "./PipelineVisual";
+import { useReducedMotion } from "@/hooks/useMediaQuery";
 import { motionEase } from "@/styles/tokens";
 
 const fade = (delay: number) => ({
   initial: { opacity: 0, y: 14 },
   animate: { opacity: 1, y: 0 },
-  transition: { duration: 0.9, delay, ease: motionEase },
+  transition: { duration: 0.45, delay, ease: motionEase },
 });
 
 export function Hero() {
-  const consoleRef = useRef<HTMLDivElement>(null);
-  const { scrollYProgress } = useScroll({ target: consoleRef, offset: ["start end", "start 0.25"] });
-  const rotateX = useTransform(scrollYProgress, [0, 1], [22, 0]);
-  const scale = useTransform(scrollYProgress, [0, 1], [0.92, 1]);
-  const glowOpacity = useTransform(scrollYProgress, [0, 1], [0.4, 1]);
+  const reduce = useReducedMotion();
 
   return (
     <section className="relative overflow-hidden pb-24 pt-32 md:pt-40" aria-labelledby="hero-title">
-      {/* Atmosphere */}
-      <div className="pointer-events-none absolute inset-0" aria-hidden>
-        <div className="grid-guides absolute inset-0 [mask-image:radial-gradient(ellipse_70%_55%_at_50%_0%,black,transparent)]" />
-        <motion.div style={{ opacity: glowOpacity }} className="absolute inset-x-0 bottom-0 h-[85%]">
-          <HorizonGlow className="h-full w-full" />
-        </motion.div>
-        <div className="absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-ink-950 to-transparent" />
-      </div>
-
       <div className="container relative">
-        <motion.div {...fade(0)} className="mb-8 flex">
-          <Link to="/platform" className="group inline-flex items-center gap-3 rounded-full border border-white/10 bg-white/[.03] py-1 pl-1 pr-4 text-[12.5px] text-ink-300 backdrop-blur transition-colors hover:border-white/20 hover:text-white">
-            <span className="rounded-full bg-electric/15 px-2.5 py-1 font-mono text-[10px] uppercase tracking-[0.12em] text-electric-400">New</span>
-            Agent orchestration with human approval gates
-            <span className="transition-transform group-hover:translate-x-0.5">→</span>
-          </Link>
-        </motion.div>
 
         <div className="grid items-end gap-10 lg:grid-cols-[1.35fr_1fr]">
-          <div style={{ ["--lr-final" as string]: "#FFFFFF" }}>
+          <div style={{ ["--lr-final" as string]: "#F4F3EE" }}>
             <LetterReveal
               className="text-display-xl font-medium text-white"
-              segments={[{ text: "Turn AI into your" }, "br", { text: "competitive " }, { text: "advantage.", color: "#9FB5FF" }]}
+              segments={[{ text: "Turn AI into your" }, "br", { text: "competitive " }, { text: "advantage." }]}
             />
             <span id="hero-title" className="sr-only">Turn AI into your competitive advantage.</span>
           </div>
           <div>
-            <motion.p {...fade(1.0)} className="max-w-md text-[17px] leading-relaxed text-ink-300">
+            <motion.p {...(reduce ? {} : fade(0.12))} className="max-w-md text-[17px] leading-relaxed text-ink-300">
               ALDER designs, deploys and operates AI agents that work inside your systems — with the governance, observability and human oversight enterprises require.
             </motion.p>
-            <motion.div {...fade(1.15)} className="mt-8 flex flex-wrap gap-3">
+            <motion.div {...(reduce ? {} : fade(0.2))} className="mt-8 flex flex-wrap gap-3">
               <Button asChild size="lg" signal>
                 <Link to="/platform">Explore our platform</Link>
               </Button>
@@ -64,13 +43,12 @@ export function Hero() {
         </div>
 
         {/* Live console */}
-        <div className="mt-20 [perspective:1600px]" ref={consoleRef}>
+        <div className="mt-16">
           <motion.div
-            style={{ rotateX, scale, transformOrigin: "50% 0%" }}
-            initial={{ opacity: 0, y: 40 }}
+            initial={reduce ? false : { opacity: 0.7, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1.1, delay: 0.9, ease: motionEase }}
-            className="glass overflow-hidden rounded-2xl bg-ink-900/70 shadow-[0_60px_120px_-40px_rgba(76,125,255,.35),0_0_0_1px_rgba(255,255,255,.04)]"
+            transition={{ duration: 0.5, delay: 0.25, ease: motionEase }}
+            className="overflow-hidden rounded-2xl border border-white/10 bg-ink-900"
           >
             <div className="flex flex-wrap items-center justify-between gap-3 border-b border-white/[.06] px-4 py-3">
               <div className="flex items-center gap-3 text-[12.5px]">
@@ -89,7 +67,7 @@ export function Hero() {
             </div>
             <PipelineVisual />
           </motion.div>
-          <p className="mt-4 text-center font-mono text-[10.5px] text-ink-500">Illustrative product visualisation · simulated data</p>
+          <p className="mt-4 text-center text-xs text-ink-400">Illustrative product visualisation · simulated data</p>
         </div>
       </div>
     </section>

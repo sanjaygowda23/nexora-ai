@@ -131,7 +131,7 @@ function Builder({ wfId }: { wfId: string }) {
   const setRun = (ids: string[] | "all", run: RunState) =>
     setNodes((ns) => ns.map((n) => (ids === "all" || ids.includes(n.id) ? { ...n, data: { ...n.data, run } } : n)));
   const setEdgeActive = (ids: string[], active: boolean) =>
-    setEdges((es) => es.map((e) => (ids.includes(e.id) ? { ...e, animated: active, style: active ? { stroke: "#4C7DFF", strokeWidth: 2 } : e.style } : e)));
+    setEdges((es) => es.map((e) => (ids.includes(e.id) ? { ...e, animated: active, style: active ? { stroke: "#44705B", strokeWidth: 2 } : e.style } : e)));
 
   const resetRun = () => {
     setNodes((ns) => ns.map((n) => ({ ...n, data: { ...n.data, run: undefined } })));

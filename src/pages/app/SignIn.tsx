@@ -5,7 +5,6 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import { toast } from "sonner";
 import { Logo } from "@/components/brand/Logo";
 import { usePageMeta } from "@/components/layout/PageMeta";
-import { HorizonGlow } from "@/components/marketing/home/HorizonGlow";
 import { Button } from "@/components/ui/button";
 import { useAppStore } from "@/store/AppStore";
 
@@ -41,7 +40,6 @@ export default function SignIn() {
         <Link to="/" className="text-[13px] text-ink-500 hover:text-white">← Back to website</Link>
       </div>
       <div className="relative hidden overflow-hidden border-l border-white/[.06] bg-ink-900 lg:block">
-        <HorizonGlow className="absolute inset-0 h-full w-full" />
         <div className="grid-guides absolute inset-0 opacity-60" aria-hidden />
         <ul className="relative flex h-full flex-col justify-center gap-4 p-16">
           {[
@@ -54,7 +52,7 @@ export default function SignIn() {
             return (
               <motion.li key={t as string} initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: 0.2 + i * 0.08 }}
                 className="glass flex items-center gap-4 rounded-2xl p-5">
-                <span className="grid h-10 w-10 place-items-center rounded-xl bg-white/[.06] text-electric-400"><Icon className="h-5 w-5" /></span>
+                <span className="grid h-10 w-10 place-items-center rounded-xl bg-white/[.06] text-brand-400"><Icon className="h-5 w-5" /></span>
                 <span><span className="block text-[15px] font-medium">{t as string}</span><span className="text-[13px] text-ink-400">{d as string}</span></span>
               </motion.li>
             );

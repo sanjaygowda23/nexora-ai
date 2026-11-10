@@ -207,6 +207,6 @@ export default function Agents() {
 
 export function AgentAvatar({ name, small }: { name: string; small?: boolean }) {
   const hue = [...name].reduce((s, c) => s + c.charCodeAt(0), 0) % 4;
-  const bg = ["from-electric to-violet", "from-violet to-electric-600", "from-[#16998A] to-electric", "from-[#C4861E] to-violet"][hue];
-  return <span className={cn("grid shrink-0 place-items-center rounded-lg bg-gradient-to-br font-semibold text-white", bg, small ? "h-8 w-8 text-[12px]" : "h-10 w-10 text-[14px]")} aria-hidden>{name.slice(0, 2)}</span>;
+  const bg = ["bg-brand", "bg-[#536B5B]", "bg-[#586D79]", "bg-[#796B55]"][hue];
+  return <span className={cn("grid shrink-0 place-items-center rounded-lg font-semibold text-white", bg, small ? "h-8 w-8 text-[12px]" : "h-10 w-10 text-[14px]")} aria-hidden>{name.slice(0, 2)}</span>;
 }

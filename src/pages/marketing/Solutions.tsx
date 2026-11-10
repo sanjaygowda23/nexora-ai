@@ -56,7 +56,7 @@ export default function Solutions() {
               <article id={s.id} className="scroll-mt-24 overflow-hidden rounded-2xl border border-white/[.07] bg-ink-900">
                 <header className="flex flex-wrap items-start justify-between gap-6 border-b border-white/[.06] p-6 md:p-10">
                   <div className="flex items-start gap-5">
-                    <span className="grid h-12 w-12 shrink-0 place-items-center rounded-xl border border-white/10 bg-gradient-to-br from-electric/20 to-violet/10 text-white"><s.icon className="h-5 w-5" /></span>
+                    <span className="grid h-12 w-12 shrink-0 place-items-center rounded-xl border border-white/10 bg-white/[.06] text-white"><s.icon className="h-5 w-5" /></span>
                     <div>
                       <p className="font-mono text-[11px] text-signal">{s.index}</p>
                       <h2 className="mt-1 text-display-md font-medium text-white">{s.title}</h2>
@@ -71,7 +71,7 @@ export default function Solutions() {
                     <p className="mt-3 text-[15px] leading-relaxed text-ink-300">{s.problem}</p>
                   </div>
                   <div className="p-6 md:p-10">
-                    <p className="eyebrow text-electric-400">Our solution</p>
+                    <p className="eyebrow text-brand-400">Our solution</p>
                     <p className="mt-3 text-[15px] leading-relaxed text-ink-300">{s.solution}</p>
                   </div>
                 </div>

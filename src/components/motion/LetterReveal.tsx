@@ -5,10 +5,10 @@ import { useReducedMotion } from "@/hooks/useMediaQuery";
 type Segment = { text: string; className?: string; color?: string };
 
 /**
- * Headline that resolves letter by letter: ghost → blurred → electric → final colour.
+ * Headline that resolves letter by letter: ghost → blurred → brand → final colour.
  * Words never break mid-word; screen readers get the plain sentence via aria-label.
  */
-export function LetterReveal({ segments, className, delay = 0.15, stagger = 0.022 }: {
+export function LetterReveal({ segments, className, delay = 0.05, stagger = 0.006 }: {
   segments: (Segment | "br")[]; className?: string; delay?: number; stagger?: number;
 }) {
   const reduce = useReducedMotion();
@@ -34,9 +34,10 @@ export function LetterReveal({ segments, className, delay = 0.15, stagger = 0.02
                         <motion.span
                           key={ci}
                           className="inline-block"
-                          initial={{ opacity: 0, filter: "blur(10px)", y: "0.18em", color: "#4C7DFF" }}
-                          animate={{ opacity: 1, filter: "blur(0px)", y: 0, color: seg.color ?? "var(--lr-final, currentColor)" }}
-                          transition={{ duration: 0.75, delay: d, ease: [0.22, 0.7, 0.2, 1], color: { duration: 0.9, delay: d + 0.25 } }}
+                          initial={{ opacity: 0.6, y: "0.06em" }}
+                          animate={{ opacity: 1, y: 0 }}
+                          style={{ color: seg.color }}
+                          transition={{ duration: 0.4, delay: d, ease: [0.22, 0.7, 0.2, 1] }}
                         >
                           {ch}
                         </motion.span>

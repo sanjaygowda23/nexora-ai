@@ -12,18 +12,8 @@ function SpotlightCard({ className, children, to }: { className?: string; childr
     <motion.div variants={revealItem} className={className}>
       <Link
         to={to}
-        onMouseMove={(e) => {
-          const r = e.currentTarget.getBoundingClientRect();
-          e.currentTarget.style.setProperty("--mx", `${e.clientX - r.left}px`);
-          e.currentTarget.style.setProperty("--my", `${e.clientY - r.top}px`);
-        }}
         className="group relative flex h-full flex-col overflow-hidden rounded-2xl border border-white/[.07] bg-ink-900 p-6 transition-colors duration-300 hover:border-white/[.14] md:p-7"
       >
-        <span
-          aria-hidden
-          className="pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-300 group-hover:opacity-100"
-          style={{ background: "radial-gradient(420px circle at var(--mx) var(--my), rgba(76,125,255,.10), transparent 60%)" }}
-        />
         <div className="relative flex h-full flex-col">{children}</div>
       </Link>
     </motion.div>
@@ -35,7 +25,7 @@ function CardHead({ id }: { id: string }) {
   return (
     <>
       <div className="flex items-start justify-between">
-        <span className="grid h-10 w-10 place-items-center rounded-xl border border-white/10 bg-white/[.03] text-electric-400">
+        <span className="grid h-10 w-10 place-items-center rounded-xl border border-white/10 bg-white/[.03] text-brand-400">
           <s.icon className="h-[18px] w-[18px]" />
         </span>
         <ArrowUpRight className="h-4 w-4 text-ink-500 transition-all group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-white" />
@@ -74,8 +64,8 @@ export function SolutionsBento() {
                 ["policy", "no approval required for this intent", false],
               ].map(([k, v, done], i) => (
                 <li key={i} className="flex items-start gap-3">
-                  {done ? <Check className="mt-0.5 h-3.5 w-3.5 shrink-0 text-success" /> : <Loader2 className="mt-0.5 h-3.5 w-3.5 shrink-0 animate-spin text-electric-400" />}
-                  <span className="w-20 shrink-0 text-electric-400">{k as string}</span>
+                  {done ? <Check className="mt-0.5 h-3.5 w-3.5 shrink-0 text-success" /> : <Loader2 className="mt-0.5 h-3.5 w-3.5 shrink-0 animate-spin text-brand-400" />}
+                  <span className="w-20 shrink-0 text-brand-400">{k as string}</span>
                   <span className="text-ink-300">{v as string}</span>
                 </li>
               ))}

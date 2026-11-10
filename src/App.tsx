@@ -1,5 +1,6 @@
 import { lazy, Suspense } from "react";
 import { createHashRouter, createRoutesFromElements, Navigate, Outlet, Route, RouterProvider } from "react-router-dom";
+import { MotionConfig } from "framer-motion";
 import { Toaster } from "sonner";
 import { AppStoreProvider } from "@/store/AppStore";
 import { TooltipProvider } from "@/components/ui/tooltip";
@@ -83,11 +84,13 @@ const router = createHashRouter(
 
 export default function App() {
   return (
+    <MotionConfig reducedMotion="user">
     <AppStoreProvider>
       <TooltipProvider>
         <RouterProvider router={router} future={{ v7_startTransition: true }} />
         <Toaster theme="dark" position="bottom-right" toastOptions={{ className: "!font-sans !rounded-xl !border-border" }} />
       </TooltipProvider>
     </AppStoreProvider>
+    </MotionConfig>
   );
 }

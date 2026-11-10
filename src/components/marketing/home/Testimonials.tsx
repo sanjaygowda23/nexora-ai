@@ -21,7 +21,7 @@ export function Testimonials() {
       <SectionHeading index="08" eyebrow="Voices" title={<span id="t-h">How teams describe the work.</span>} />
       <figure className="relative mt-14 rounded-2xl border border-white/[.07] bg-ink-900 p-8 md:p-14" aria-roledescription="carousel">
         <span className="absolute right-6 top-6 rounded-full border border-warning/30 bg-warning/10 px-2.5 py-1 font-mono text-[10px] uppercase tracking-[0.1em] text-warning">Illustrative demo profile</span>
-        <span aria-hidden className="block font-display text-7xl leading-none text-electric/60">“</span>
+        <span aria-hidden className="block font-display text-7xl leading-none text-brand/60">“</span>
         <div className="min-h-[9rem] md:min-h-[7.5rem]" aria-live="polite">
           <AnimatePresence mode="wait">
             <motion.blockquote key={i} initial={{ opacity: 0, y: 10, filter: "blur(6px)" }} animate={{ opacity: 1, y: 0, filter: "blur(0px)" }} exit={{ opacity: 0, y: -8, filter: "blur(6px)" }} transition={{ duration: 0.5, ease: motionEase }}
@@ -32,7 +32,7 @@ export function Testimonials() {
         </div>
         <figcaption className="mt-10 flex flex-wrap items-center justify-between gap-6 border-t border-white/[.07] pt-6">
           <div className="flex items-center gap-4">
-            <span className="grid h-11 w-11 place-items-center rounded-full bg-gradient-to-br from-electric to-violet text-[14px] font-semibold text-white" aria-hidden>
+            <span className="grid h-11 w-11 place-items-center rounded-full bg-gradient-to-br from-brand to-mineral text-[14px] font-semibold text-white" aria-hidden>
               {t.name.split(" ").map((n) => n[0]).join("")}
             </span>
             <div>

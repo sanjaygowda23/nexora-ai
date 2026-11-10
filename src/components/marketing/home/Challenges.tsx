@@ -82,11 +82,11 @@ export function Challenges() {
           ))}
         </div>
 
-        <div id="ch-panel" role="tabpanel" aria-labelledby={`ch-tab-${active}`} className="relative overflow-hidden rounded-2xl border border-white/[.07] bg-gradient-to-br from-ink-850 to-ink-900 p-8 flex flex-col md:min-h-[400px] md:p-10">
+        <div id="ch-panel" role="tabpanel" aria-labelledby={`ch-tab-${active}`} className="relative overflow-hidden rounded-2xl border border-white/[.07] bg-ink-900 p-8 flex flex-col md:min-h-[400px] md:p-10">
           <div className="grid-guides absolute inset-0 opacity-50 [mask-image:linear-gradient(to_bottom,black,transparent)]" aria-hidden />
           <AnimatePresence mode="wait">
             <motion.div key={active} initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -8 }} transition={{ duration: 0.4, ease: motionEase }} className="relative flex flex-1 flex-col">
-              <span className="eyebrow text-electric-400">AI opportunity</span>
+              <span className="eyebrow text-brand-400">AI opportunity</span>
               <h3 className="mt-4 text-display-md font-medium text-white">{item.opportunity}</h3>
               <p className="mt-4 max-w-md text-[16px] leading-relaxed text-ink-300">{item.plan}</p>
               <div className="mt-auto flex items-end gap-4 border-t border-white/[.07] pt-8">

@@ -87,7 +87,7 @@ function Profile() {
       <Section title="Profile" description="How you appear to teammates across the workspace."
         footer={<><Button type="button" variant="ghost" disabled={!isDirty} onClick={() => reset()}>Discard</Button><Button type="submit" variant="brand" disabled={!isDirty}>Save changes</Button></>}>
         <div className="flex items-center gap-4">
-          <span className="grid h-14 w-14 place-items-center rounded-full bg-gradient-to-br from-electric to-violet text-lg font-semibold text-white" aria-hidden>{settings.profile.name.split(" ").map((n) => n[0]).join("").slice(0, 2)}</span>
+          <span className="grid h-14 w-14 place-items-center rounded-full bg-brand text-lg font-semibold text-white" aria-hidden>{settings.profile.name.split(" ").map((n) => n[0]).join("").slice(0, 2)}</span>
           <div><p className="text-[13.5px] font-medium">Avatar</p><p className="text-[12.5px] text-muted-foreground">Generated from your initials.</p></div>
         </div>
         <div className="grid gap-5 sm:grid-cols-2">
@@ -196,9 +196,9 @@ function Appearance() {
           {([["light", "Light", Sun], ["dark", "Dark", Moon], ["system", "System", Laptop]] as const).map(([v, l, I]) => (
             <button key={v} role="radio" aria-checked={a.theme === v} onClick={() => update({ theme: v })}
               className={cn("overflow-hidden rounded-xl border text-left transition-colors", a.theme === v ? "border-primary ring-2 ring-primary/25" : "hover:border-primary/40")}>
-              <div className={cn("h-16 p-2", v === "light" ? "bg-[#F5F6F9]" : v === "dark" ? "bg-[#090D16]" : "bg-gradient-to-r from-[#F5F6F9] from-50% to-[#090D16] to-50%")}>
-                <div className={cn("h-2 w-10 rounded", v === "light" ? "bg-[#DCE0E8]" : "bg-[#1B2436]")} />
-                <div className="mt-1.5 h-2 w-16 rounded bg-[#4C7DFF]" />
+              <div className={cn("h-16 p-2", v === "light" ? "bg-[#F4F3EE]" : v === "dark" ? "bg-[#1C211E]" : "bg-gradient-to-r from-[#F4F3EE] from-50% to-[#1C211E] to-50%")}>
+                <div className={cn("h-2 w-10 rounded", v === "light" ? "bg-[#D8DED3]" : "bg-[#39443C]")} />
+                <div className="mt-1.5 h-2 w-16 rounded bg-[#44705B]" />
               </div>
               <div className="flex items-center gap-2 px-3 py-2 text-[13px] font-medium"><I className="h-3.5 w-3.5" />{l}</div>
             </button>

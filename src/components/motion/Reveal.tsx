@@ -1,22 +1,9 @@
-import { motion, useInView, type HTMLMotionProps } from "framer-motion";
-import { useRef } from "react";
+import { motion, type HTMLMotionProps } from "framer-motion";
 import { motionEase } from "@/styles/tokens";
 
-/** Fade-and-rise on first entry into the viewport. */
-export function Reveal({ delay = 0, y = 18, children, ...props }: HTMLMotionProps<"div"> & { delay?: number; y?: number }) {
-  const ref = useRef<HTMLDivElement>(null);
-  const inView = useInView(ref, { once: true, margin: "-60px" });
-  return (
-    <motion.div
-      ref={ref}
-      initial={{ opacity: 0, y }}
-      animate={inView ? { opacity: 1, y: 0 } : undefined}
-      transition={{ duration: 0.8, ease: motionEase, delay }}
-      {...props}
-    >
-      {children}
-    </motion.div>
-  );
+/** Static section wrapper: keep reading content visible while scrolling. */
+export function Reveal({ delay: _delay, y: _y, children, ...props }: HTMLMotionProps<"div"> & { delay?: number; y?: number }) {
+  return <motion.div {...props}>{children}</motion.div>;
 }
 
 /** Staggers direct children that use `revealItem` variants. */

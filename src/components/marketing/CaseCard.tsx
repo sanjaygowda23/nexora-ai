@@ -8,7 +8,7 @@ export function CaseCard({ cs, className, large }: { cs: CaseStudy; className?: 
   const lead = cs.results[0];
   return (
     <Link to={`/case-studies/${cs.id}`} className={cn("group flex h-full flex-col overflow-hidden rounded-2xl border border-white/[.07] bg-ink-900 transition-colors hover:border-white/[.15]", className)}>
-      <div className={cn("relative overflow-hidden border-b border-white/[.06]", large ? "h-64" : "h-44")} style={{ background: `radial-gradient(120% 90% at 0% 100%, ${cs.accent}33, transparent 60%), #0B0F19` }}>
+      <div className={cn("relative overflow-hidden border-b border-white/[.06]", large ? "h-64" : "h-44")} style={{ background: "#232A25" }}>
         <svg viewBox="0 0 400 180" preserveAspectRatio="none" className="absolute inset-0 h-full w-full" aria-hidden>
           {Array.from({ length: 14 }).map((_, i) => {
             const y = 20 + i * 11;

@@ -5,7 +5,7 @@ import { Card } from "@/components/ui/card";
 import { Skeleton } from "@/components/ui/skeleton";
 import { cn } from "@/lib/utils";
 
-export function StatCard({ label, value, delta, icon: Icon, spark, loading, color = "#4C7DFF", invertDelta }: {
+export function StatCard({ label, value, delta, icon: Icon, spark, loading, color = "#44705B", invertDelta }: {
   label: string; value: string; delta?: number; icon: LucideIcon; spark?: number[]; loading?: boolean; color?: string; invertDelta?: boolean;
 }) {
   if (loading) {

@@ -49,7 +49,7 @@ export default function Platform() {
             <div role="tablist" aria-label="Layers" className="relative grid grid-cols-2 gap-2 md:hidden">
               {ORDER.map((id) => (
                 <button key={id} role="tab" aria-selected={sel === id} onClick={() => setSel(id)}
-                  className={cn("rounded-lg border px-3 py-2.5 text-left text-[13px]", sel === id ? "border-electric bg-electric/10 text-white" : "border-white/10 text-ink-300")}>
+                  className={cn("rounded-lg border px-3 py-2.5 text-left text-[13px]", sel === id ? "border-brand bg-brand/10 text-white" : "border-white/10 text-ink-300")}>
                   {LAYERS[id].title}
                 </button>
               ))}
@@ -85,7 +85,7 @@ export default function Platform() {
                 <li key={i} className="group relative cursor-default rounded-xl p-4 transition-colors hover:bg-white/[.03]" onMouseEnter={() => setSel(j.layer)}>
                   <span className={cn("absolute -left-[31px] top-5 h-2.5 w-2.5 rounded-full border-2 border-ink-950 transition-colors", sel === j.layer ? "bg-signal" : "bg-ink-600")} aria-hidden />
                   <div className="flex flex-wrap items-baseline gap-3">
-                    <span className="font-mono text-[12px] text-electric-400">{j.t}</span>
+                    <span className="font-mono text-[12px] text-brand-400">{j.t}</span>
                     <span className="font-mono text-[10.5px] uppercase tracking-[0.1em] text-ink-500">{LAYERS[j.layer].title}</span>
                   </div>
                   <p className="mt-1.5 text-[15px] text-ink-100">{j.m}</p>

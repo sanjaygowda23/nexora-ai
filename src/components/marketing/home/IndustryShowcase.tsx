@@ -37,7 +37,7 @@ export function IndustryShowcase() {
                 <div className="mt-6 flex flex-wrap gap-2">
                   {ind.compliance.map((c) => <span key={c} className="rounded-full border border-signal/25 bg-signal/[.06] px-2.5 py-1 font-mono text-[10.5px] text-signal">{c}</span>)}
                 </div>
-                <Link to={`/industries#${ind.id}`} className="mt-auto inline-flex items-center gap-1.5 pt-8 text-[14px] text-white hover:text-electric-400">
+                <Link to={`/industries#${ind.id}`} className="mt-auto inline-flex items-center gap-1.5 pt-8 text-[14px] text-white hover:text-brand-400">
                   Explore {ind.name.toLowerCase()} <ArrowRight className="h-4 w-4" />
                 </Link>
               </div>

@@ -8,47 +8,57 @@
  * ------------------------------------------------------------------ */
 @layer base {
   :root {
-    --background: 225 25% 97%;
-    --foreground: 224 30% 10%;
-    --surface: 0 0% 100%;
-    --surface-2: 225 22% 95%;
-    --card: 0 0% 100%;
-    --card-foreground: 224 30% 10%;
-    --popover: 0 0% 100%;
-    --popover-foreground: 224 30% 10%;
-    --primary: 224 100% 65%;
-    --primary-foreground: 0 0% 100%;
-    --muted: 225 20% 94%;
-    --muted-foreground: 224 12% 42%;
-    --accent: 225 22% 93%;
-    --accent-foreground: 224 30% 10%;
-    --destructive: 358 85% 64%;
-    --destructive-foreground: 0 0% 100%;
-    --border: 224 18% 88%;
-    --input: 224 18% 86%;
-    --ring: 224 100% 65%;
+    --background: 50.0 21.4% 94.5%;
+    --foreground: 120.0 11.1% 14.1%;
+    --surface: 0.0 0.0% 100.0%;
+    --surface-2: 82.5 17.4% 91.0%;
+    --card: 0.0 0.0% 100.0%;
+    --card-foreground: 120.0 11.1% 14.1%;
+    --popover: 0.0 0.0% 100.0%;
+    --popover-foreground: 120.0 11.1% 14.1%;
+    --primary: 151.4 24.4% 35.3%;
+    --primary-foreground: 0.0 0.0% 100.0%;
+    --muted: 82.5 17.4% 91.0%;
+    --muted-foreground: 132.0 5.1% 38.4%;
+    --accent: 95.0 20.7% 88.6%;
+    --accent-foreground: 120.0 11.1% 14.1%;
+    --destructive: 5.0 46.8% 45.7%;
+    --destructive-foreground: 0.0 0.0% 100.0%;
+    --border: 92.7 14.3% 84.9%;
+    --input: 102.9 10.4% 73.7%;
+    --ring: 151.4 24.4% 35.3%;
+    --brand-ink: 151 25% 27%;
+    --mineral-ink: 194 21% 31%;
+    --success: 145 43% 28%;
+    --warning: 34 67% 30%;
+    --danger: 5 47% 46%;
     --radius: 10px;
   }
   .dark {
-    --background: 222 44% 4%;
-    --foreground: 224 33% 95%;
-    --surface: 222 40% 7%;
-    --surface-2: 222 35% 10%;
-    --card: 222 40% 7%;
-    --card-foreground: 224 33% 95%;
-    --popover: 222 38% 9%;
-    --popover-foreground: 224 33% 95%;
-    --primary: 224 100% 65%;
-    --primary-foreground: 0 0% 100%;
-    --muted: 222 30% 12%;
-    --muted-foreground: 223 14% 60%;
-    --accent: 222 30% 14%;
-    --accent-foreground: 224 33% 95%;
-    --destructive: 358 85% 64%;
-    --destructive-foreground: 0 0% 100%;
-    --border: 222 26% 15%;
-    --input: 222 26% 18%;
-    --ring: 224 100% 65%;
+    --background: 150.0 8.7% 9.0%;
+    --brand-ink: 112 26% 71%;
+    --mineral-ink: 189 18% 72%;
+    --success: 134 24% 65%;
+    --warning: 39 53% 66%;
+    --danger: 6 54% 69%;
+    --foreground: 50.0 21.4% 94.5%;
+    --surface: 144.0 8.2% 12.0%;
+    --surface-2: 137.1 9.1% 15.1%;
+    --card: 144.0 8.2% 12.0%;
+    --card-foreground: 50.0 21.4% 94.5%;
+    --popover: 137.1 9.1% 15.1%;
+    --popover-foreground: 50.0 21.4% 94.5%;
+    --primary: 112.1 26.0% 71.4%;
+    --primary-foreground: 150.0 8.7% 9.0%;
+    --muted: 133.3 9.3% 19.0%;
+    --muted-foreground: 97.5 4.8% 67.1%;
+    --accent: 129.2 11.9% 21.4%;
+    --accent-foreground: 50.0 21.4% 94.5%;
+    --destructive: 6.4 54.1% 69.2%;
+    --destructive-foreground: 150.0 8.7% 9.0%;
+    --border: 136.4 8.8% 24.5%;
+    --input: 132.9 8.3% 32.9%;
+    --ring: 112.1 26.0% 71.4%;
   }
 
   * { @apply border-border; }
@@ -58,7 +68,9 @@
     font-feature-settings: "ss01", "cv11";
     overflow-x: hidden;
   }
-  ::selection { background: rgba(76, 125, 255, 0.35); color: #fff; }
+  ::selection { background: #C5D8A4; color: #151917; }
+  input, textarea { caret-color: hsl(var(--primary)); }
+  html { scrollbar-color: hsl(var(--muted-foreground)) hsl(var(--background)); }
   :focus-visible { outline: 2px solid hsl(var(--ring)); outline-offset: 2px; border-radius: 4px; }
   @media (prefers-reduced-motion: reduce) {
     *, *::before, *::after { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; scroll-behavior: auto !important; }
@@ -67,18 +79,10 @@
 
 @layer components {
   /* Monospace system label — the brand's "readout" voice */
-  .eyebrow { @apply font-mono text-eyebrow uppercase text-ink-400; }
+  .eyebrow { @apply text-sm font-medium text-ink-400; }
   .hairline { background-image: linear-gradient(to right, transparent, rgba(255,255,255,.12), transparent); height: 1px; }
-  .text-gradient {
-    background: linear-gradient(100deg, #fff 10%, #A9BEFF 45%, #B79CFF 80%);
-    -webkit-background-clip: text; background-clip: text; color: transparent;
-  }
-  .glass {
-    background: linear-gradient(180deg, rgba(255,255,255,.055), rgba(255,255,255,.02));
-    border: 1px solid rgba(255,255,255,.08);
-    backdrop-filter: blur(14px) saturate(140%);
-    -webkit-backdrop-filter: blur(14px) saturate(140%);
-  }
+
+  .glass { background: #1C211E; border: 1px solid #39443C; }
   /* Measured grid backdrop used in hero/architecture */
   .grid-guides {
     background-image:
@@ -88,8 +92,8 @@
   }
   .grid-guides-light {
     background-image:
-      linear-gradient(to right, rgba(9,13,22,.06) 1px, transparent 1px),
-      linear-gradient(to bottom, rgba(9,13,22,.06) 1px, transparent 1px);
+      linear-gradient(to right, rgba(28,33,30,.06) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(28,33,30,.06) 1px, transparent 1px);
     background-size: 72px 72px;
   }
   .skeleton {
@@ -103,21 +107,23 @@
 .react-flow { --xy-background-color: hsl(var(--background)); --xy-node-background-color: transparent; --xy-edge-stroke: hsl(var(--muted-foreground)); }
 .react-flow__node-alder { padding: 0; border: 0; background: transparent; border-radius: 12px; }
 .react-flow__attribution { display: none; }
-.react-flow__handle { width: 10px; height: 10px; border: 2px solid hsl(var(--background)); background: #4C7DFF; }
+.react-flow__handle { width: 10px; height: 10px; border: 2px solid hsl(var(--background)); background: #44705B; }
 .react-flow__edge-path { stroke: hsl(var(--muted-foreground)); stroke-width: 1.5; }
-.react-flow__edge.selected .react-flow__edge-path, .react-flow__edge:hover .react-flow__edge-path { stroke: #4C7DFF; }
+.react-flow__edge.selected .react-flow__edge-path, .react-flow__edge:hover .react-flow__edge-path { stroke: #44705B; }
 .react-flow__controls { box-shadow: none; border: 1px solid hsl(var(--border)); border-radius: 8px; overflow: hidden; }
 .react-flow__controls-button { background: hsl(var(--surface)); border-bottom: 1px solid hsl(var(--border)); color: hsl(var(--foreground)); fill: hsl(var(--foreground)); }
 .react-flow__controls-button:hover { background: hsl(var(--accent)); }
 .react-flow__minimap { background: hsl(var(--surface)); border: 1px solid hsl(var(--border)); border-radius: 8px; }
 
 /* Range slider (impact calculator) */
-        .nx-range { -webkit-appearance: none; appearance: none; height: 4px; border-radius: 4px; cursor: pointer;
-          background: linear-gradient(to right, #4C7DFF 0%, #8B5CF6 var(--pct), rgba(255,255,255,.1) var(--pct)); }
-        .nx-range::-webkit-slider-thumb { -webkit-appearance: none; width: 20px; height: 20px; border-radius: 50%; background: #fff;
-          box-shadow: 0 0 0 5px rgba(76,125,255,.25), 0 2px 8px rgba(0,0,0,.4); transition: box-shadow .2s; }
-        .nx-range:hover::-webkit-slider-thumb, .nx-range:focus-visible::-webkit-slider-thumb { box-shadow: 0 0 0 8px rgba(76,125,255,.3), 0 2px 8px rgba(0,0,0,.4); }
-        .nx-range::-moz-range-thumb { width: 20px; height: 20px; border: 0; border-radius: 50%; background: #fff; box-shadow: 0 0 0 5px rgba(76,125,255,.25); }
-        .nx-range:focus-visible { outline: none; }
+        .alder-range { -webkit-appearance: none; appearance: none; height: 4px; border-radius: 4px; cursor: pointer;
+          background: linear-gradient(to right, #A8C9A3 0%, #A8C9A3 var(--pct), rgba(255,255,255,.15) var(--pct)); }
+        .alder-range::-webkit-slider-thumb { -webkit-appearance: none; width: 20px; height: 20px; border-radius: 50%; background: #fff;
+          box-shadow: 0 0 0 5px rgba(68,112,91,.25), 0 2px 8px rgba(0,0,0,.4); transition: box-shadow .2s; }
+        .alder-range:hover::-webkit-slider-thumb, .alder-range:focus-visible::-webkit-slider-thumb { box-shadow: 0 0 0 8px rgba(68,112,91,.3), 0 2px 8px rgba(0,0,0,.4); }
+        .alder-range::-moz-range-thumb { width: 20px; height: 20px; border: 0; border-radius: 50%; background: #fff; box-shadow: 0 0 0 5px rgba(68,112,91,.25); }
+        .alder-range:focus-visible { outline: 2px solid hsl(var(--ring)); outline-offset: 5px; }
       
 @keyframes flow { from { transform: translateX(-100%); } to { transform: translateX(400%); } }
+
+.pipeline-paused * { animation-play-state: paused !important; }

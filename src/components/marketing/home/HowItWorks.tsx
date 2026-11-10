@@ -27,24 +27,24 @@ export function HowItWorks() {
         <div ref={ref} className="relative mt-16">
           {/* Progress rail */}
           <div className="absolute left-[19px] top-0 h-full w-px bg-paper-line lg:left-0 lg:top-[19px] lg:h-px lg:w-full" aria-hidden>
-            <motion.div style={{ scaleY: progress }} className="h-full w-full origin-top bg-electric lg:hidden" />
-            <motion.div style={{ scaleX: progress }} className="hidden h-full w-full origin-left bg-electric lg:block" />
+            <motion.div style={{ scaleY: progress }} className="h-full w-full origin-top bg-brand lg:hidden" />
+            <motion.div style={{ scaleX: progress }} className="hidden h-full w-full origin-left bg-brand lg:block" />
           </div>
 
           <ol className="relative grid gap-10 lg:grid-cols-4 lg:gap-6">
             {STEPS.map((s, i) => (
               <motion.li key={s.title} initial={{ opacity: 0, y: 18 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, margin: "-60px" }}
                 transition={{ duration: 0.8, delay: i * 0.08, ease: motionEase }} className="relative pl-14 lg:pl-0 lg:pt-16">
-                  <span className="absolute left-0 top-0 grid h-10 w-10 place-items-center rounded-full border border-paper-line bg-white text-electric-600 shadow-sm">
+                  <span className="absolute left-0 top-0 grid h-10 w-10 place-items-center rounded-full border border-paper-line bg-white text-brand-600 shadow-sm">
                     <s.icon className="h-[18px] w-[18px]" />
                   </span>
-                  <p className="font-mono text-[11px] uppercase tracking-[0.12em] text-ink-500">0{i + 1} · {s.time}</p>
+                  <p className="font-mono text-[11px] uppercase tracking-[0.12em] text-ink-600">0{i + 1} · {s.time}</p>
                   <h3 className="mt-3 text-2xl font-medium tracking-[-0.03em]">{s.title}</h3>
-                  <p className="mt-3 text-[15px] leading-relaxed text-ink-500">{s.body}</p>
+                  <p className="mt-3 text-[15px] leading-relaxed text-ink-600">{s.body}</p>
                   <ul className="mt-5 space-y-1.5 border-t border-paper-line pt-4">
                     {s.out.map((o) => (
                       <li key={o} className="flex items-center gap-2 text-[13px] text-ink-700">
-                        <span className="h-1 w-1 rounded-full bg-electric" aria-hidden /> {o}
+                        <span className="h-1 w-1 rounded-full bg-brand" aria-hidden /> {o}
                       </li>
                     ))}
                   </ul>
